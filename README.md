@@ -19,8 +19,11 @@ Parse out infomation from a CSV as part of the data processing stage of Data Sci
     <br/>
   </p>
 </p>
+
 ## About the project
+
 This project is intended for the pre-processing stage of data analysis, whereby raw data must be converted into more meaningful representations.
+
 Note: This project is still in it's WIP status.
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
