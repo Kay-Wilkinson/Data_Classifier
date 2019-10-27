@@ -1,6 +1,9 @@
 import csv, re, random, string
+
 from tests import regex_string_test
-# from .experimental import iab_deep_search
+from mysql_func.sql_connect import DBCrudInstantiator
+from mysql_func.sql_insert import format_load_query
+# from experimental import iab_deep_search
 
 '''
 Open input CSV file and convert into an ordered dictionary
@@ -112,7 +115,7 @@ def dict_to_listed_csv(male_dict, female_dict, age_dict, misc_dict, edge_case_di
         headers = ['Category - Men',
                    'Category - Female',
                    'Category - Age',
-                   'Category - Misc', 
+                   'Category - Misc',
                    'Edge Cases - Delete Post-Perligo']
         rows = [headers]
         for data in final_results:
@@ -122,6 +125,9 @@ def dict_to_listed_csv(male_dict, female_dict, age_dict, misc_dict, edge_case_di
 
 
 if __name__ == '__main__':
+    '''
+    Parse and Categorise!
+    '''
     # Read from CSV
     tags = read_and_parse_target('inge_tag_list.csv')
     # Compare tag categories against Regex compilation
@@ -134,9 +140,17 @@ if __name__ == '__main__':
     write_file_name = 'classified_inge_tag_list_{}.csv'.format(random_string(5))
     # Write each tag category to a list of tuples. Write that to a csv file
     dict_to_listed_csv(m, f, a, g, edge, write_file_name)
+
     '''
     Regex String Tests
     '''
     regex_test = r"([0-9])"
     string_test = "'a25-49 (nbcu)'"
     # test_1 = regex_string_test.reg_test(regex_test, string_test)
+
+    '''
+    Dump data to a SQL table for further data wrangling
+    '''
+    table_name = 'TABLE_NAME_REPLACE_ME'
+    insertion = format_load_query(write_file_name, table_name)
+    DBCrudInstantiator.make_mysqldb_connection(insertion)
