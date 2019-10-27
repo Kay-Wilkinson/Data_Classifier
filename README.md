@@ -41,7 +41,7 @@ Note: This project is still in it's WIP status.
 ### Built With
 I have intentionally kept the dependencies of this project to a bare minimum and therefore the only 3rd party packages needed (at this point), is BeautifulSoup and urllib. 
 Note that these are only required should you want to use the IAB Deep Search
-* [bs4][a link](https://pypi.org/project/beautifulsoup4/)
+* BS4: [https://pypi.org/project/beautifulsoup4/]
 
 ## Getting Started
 
@@ -69,10 +69,6 @@ $ python classy.py
 Output will be a CSV file within the same directory level
 
 ## Roadmap
-
-* Fix iteration issues on keys() within edge_case function
-* Optimise writing to CSV to be quicker.
-* Take in user input of filename 
 * Write to database Table
     * Option for Hadoop Table
     * Option for MySQL Table
